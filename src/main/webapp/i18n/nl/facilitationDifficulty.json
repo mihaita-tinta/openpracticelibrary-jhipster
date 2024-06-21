@@ -1,0 +1,10 @@
+{
+  "openPracticeLibraryApp": {
+    "FacilitationDifficulty": {
+      "null": "",
+      "EASY": "EASY",
+      "MODERATE": "MODERATE",
+      "HIGH": "HIGH"
+    }
+  }
+}

@@ -32,8 +32,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./target/h2db/db/openpracticelibrary;DB_CLOSE_DELAY=-1
-    username: openpracticelibrary
+    url: jdbc:h2:file:./target/h2db/db/openPracticeLibrary;DB_CLOSE_DELAY=-1
+    username: openPracticeLibrary
     password:
     hikari:
       poolName: Hikari

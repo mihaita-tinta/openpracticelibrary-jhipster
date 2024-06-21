@@ -1,0 +1,112 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (practiceItem()) {
+      <div>
+        <h2 data-cy="practiceItemDetailsHeading">
+          <span jhiTranslate="openPracticeLibraryApp.practiceItem.detail.title">Practice Item</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.title">Title</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.objective">Objective</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.objective }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.publishDate">Publish Date</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.publishDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.publishedBy">Published By</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.publishedBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'openPracticeLibraryApp.Status.' + (practiceItem()!.status ?? 'null')">{{
+              { null: '', DRAFT: 'DRAFT', IN_REVIEW: 'IN_REVIEW', READY: 'READY', PUBLISHED: 'PUBLISHED' }[practiceItem()!.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.approvedBy">Approved By</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.approvedBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.approvedDate">Approved Date</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.approvedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.authors">Authors</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.authors }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.facilitationDifficulty">Facilitation Difficulty</span></dt>
+          <dd>
+            <span [jhiTranslate]="'openPracticeLibraryApp.FacilitationDifficulty.' + (practiceItem()!.facilitationDifficulty ?? 'null')">{{
+              { null: '', EASY: 'EASY', MODERATE: 'MODERATE', HIGH: 'HIGH' }[practiceItem()!.facilitationDifficulty ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.mobiusLoopTag">Mobius Loop Tag</span></dt>
+          <dd>
+            <span [jhiTranslate]="'openPracticeLibraryApp.MobiusLoopTag.' + (practiceItem()!.mobiusLoopTag ?? 'null')">{{
+              { null: '', DISCOVERY: 'DISCOVERY', DELIVERY: 'DELIVERY', FOUNDATION: 'FOUNDATION', OPTIONS: 'OPTIONS' }[
+                practiceItem()!.mobiusLoopTag ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.what">What</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.what }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.why">Why</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.why }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.how">How</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.how }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.numberOfPeopleRequired">Number Of People Required</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.numberOfPeopleRequired }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.timeLength">Time Length</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.timeLength }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.expectedParticipants">Expected Participants</span></dt>
+          <dd>
+            <span>{{ practiceItem()!.expectedParticipants }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.practiceItem.coverImage">Cover Image</span></dt>
+          <dd>
+            @if (practiceItem()!.coverImage) {
+              <div>
+                <a [routerLink]="['/media-asset', practiceItem()!.coverImage?.id, 'view']">{{ practiceItem()!.coverImage?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/practice-item', practiceItem()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

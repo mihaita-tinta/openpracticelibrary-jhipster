@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity PracticeItem.
+    -->
+    <changeSet id="20240621095914-1" author="jhipster">
+        <createTable tableName="practice_item">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="objective" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="publish_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="published_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="approved_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="approved_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="authors" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="facilitation_difficulty" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="mobius_loop_tag" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="what" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="why" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="how" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="number_of_people_required" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="time_length" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="expected_participants" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cover_image_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_practice_item__cover_image_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="practice_item" columnName="publish_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="practice_item" columnName="approved_date" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240621095914-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/practice_item.csv"
+                  separator=";"
+                  tableName="practice_item"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="title" type="string"/>
+            <column name="objective" type="string"/>
+            <column name="publish_date" type="date"/>
+            <column name="published_by" type="string"/>
+            <column name="status" type="string"/>
+            <column name="approved_by" type="string"/>
+            <column name="approved_date" type="date"/>
+            <column name="authors" type="string"/>
+            <column name="facilitation_difficulty" type="string"/>
+            <column name="mobius_loop_tag" type="string"/>
+            <column name="what" type="clob"/>
+            <column name="why" type="clob"/>
+            <column name="how" type="clob"/>
+            <column name="number_of_people_required" type="string"/>
+            <column name="time_length" type="string"/>
+            <column name="expected_participants" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

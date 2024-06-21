@@ -1,0 +1,62 @@
+{
+  "annotations": {
+    "changelogDate": "20240621095915"
+  },
+  "applications": ["openPracticeLibrary"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subtitle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "publishDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "publishedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "DRAFT,IN_REVIEW,READY,PUBLISHED"
+    },
+    {
+      "fieldName": "approvedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "approvedDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "authors",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "jumbotronAltText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "body",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "name": "BlogItem",
+  "relationships": [
+    {
+      "otherEntityName": "mediaAsset",
+      "relationshipName": "jumbotronImage",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

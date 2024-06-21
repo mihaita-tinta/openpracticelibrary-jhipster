@@ -1,0 +1,134 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-author-heading" data-cy="AuthorCreateUpdateHeading" jhiTranslate="openPracticeLibraryApp.author.home.createOrEditLabel">
+        Create or edit a Author
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="openPracticeLibraryApp.author.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_name" jhiTranslate="openPracticeLibraryApp.author.name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_githubUsername" jhiTranslate="openPracticeLibraryApp.author.githubUsername"
+            >Github Username</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="githubUsername"
+            id="field_githubUsername"
+            data-cy="githubUsername"
+            formControlName="githubUsername"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_aboutYou" jhiTranslate="openPracticeLibraryApp.author.aboutYou">About You</label>
+          <textarea class="form-control" name="aboutYou" id="field_aboutYou" data-cy="aboutYou" formControlName="aboutYou"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_location" jhiTranslate="openPracticeLibraryApp.author.location">Location</label>
+          <input type="text" class="form-control" name="location" id="field_location" data-cy="location" formControlName="location" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_website" jhiTranslate="openPracticeLibraryApp.author.website">Website</label>
+          <input type="text" class="form-control" name="website" id="field_website" data-cy="website" formControlName="website" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_publishDate" jhiTranslate="openPracticeLibraryApp.author.publishDate">Publish Date</label>
+          <div class="d-flex">
+            <input
+              id="field_publishDate"
+              data-cy="publishDate"
+              type="datetime-local"
+              class="form-control"
+              name="publishDate"
+              formControlName="publishDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_publishedBy" jhiTranslate="openPracticeLibraryApp.author.publishedBy">Published By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="publishedBy"
+            id="field_publishedBy"
+            data-cy="publishedBy"
+            formControlName="publishedBy"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="openPracticeLibraryApp.author.status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'openPracticeLibraryApp.Status.null' | translate }}</option>
+            @for (status of statusValues; track $index) {
+              <option [value]="status">{{ 'openPracticeLibraryApp.Status.' + status | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_approvedBy" jhiTranslate="openPracticeLibraryApp.author.approvedBy">Approved By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="approvedBy"
+            id="field_approvedBy"
+            data-cy="approvedBy"
+            formControlName="approvedBy"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_approvedDate" jhiTranslate="openPracticeLibraryApp.author.approvedDate">Approved Date</label>
+          <div class="d-flex">
+            <input
+              id="field_approvedDate"
+              data-cy="approvedDate"
+              type="datetime-local"
+              class="form-control"
+              name="approvedDate"
+              formControlName="approvedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

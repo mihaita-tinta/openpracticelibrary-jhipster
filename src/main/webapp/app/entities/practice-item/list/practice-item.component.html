@@ -1,0 +1,233 @@
+<div>
+  <h2 id="page-heading" data-cy="PracticeItemHeading">
+    <span jhiTranslate="openPracticeLibraryApp.practiceItem.home.title">Practice Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="openPracticeLibraryApp.practiceItem.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-practice-item"
+        [routerLink]="['/practice-item/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="openPracticeLibraryApp.practiceItem.home.createLabel">Create a new Practice Item</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (practiceItems?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="openPracticeLibraryApp.practiceItem.home.notFound">No Practice Items found</span>
+    </div>
+  }
+
+  @if (practiceItems && practiceItems.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.title">Title</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="objective">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.objective">Objective</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="publishDate">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.publishDate">Publish Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="publishedBy">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.publishedBy">Published By</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.status">Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="approvedBy">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.approvedBy">Approved By</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="approvedDate">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.approvedDate">Approved Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="authors">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.authors">Authors</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="facilitationDifficulty">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.facilitationDifficulty">Facilitation Difficulty</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mobiusLoopTag">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.mobiusLoopTag">Mobius Loop Tag</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="what">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.what">What</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="why">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.why">Why</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="how">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.how">How</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numberOfPeopleRequired">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.numberOfPeopleRequired">Number Of People Required</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="timeLength">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.timeLength">Time Length</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expectedParticipants">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.expectedParticipants">Expected Participants</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="coverImage.id">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.practiceItem.coverImage">Cover Image</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody infinite-scroll (scrolled)="loadNextPage()" [infiniteScrollDisabled]="!hasMorePage()" [infiniteScrollDistance]="0">
+          @for (practiceItem of practiceItems; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/practice-item', practiceItem.id, 'view']">{{ practiceItem.id }}</a>
+              </td>
+              <td>{{ practiceItem.title }}</td>
+              <td>{{ practiceItem.objective }}</td>
+              <td>{{ practiceItem.publishDate | formatMediumDatetime }}</td>
+              <td>{{ practiceItem.publishedBy }}</td>
+              <td [jhiTranslate]="'openPracticeLibraryApp.Status.' + (practiceItem.status ?? 'null')">
+                {{
+                  { null: '', DRAFT: 'DRAFT', IN_REVIEW: 'IN_REVIEW', READY: 'READY', PUBLISHED: 'PUBLISHED' }[
+                    practiceItem.status ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>{{ practiceItem.approvedBy }}</td>
+              <td>{{ practiceItem.approvedDate | formatMediumDatetime }}</td>
+              <td>{{ practiceItem.authors }}</td>
+              <td [jhiTranslate]="'openPracticeLibraryApp.FacilitationDifficulty.' + (practiceItem.facilitationDifficulty ?? 'null')">
+                {{ { null: '', EASY: 'EASY', MODERATE: 'MODERATE', HIGH: 'HIGH' }[practiceItem.facilitationDifficulty ?? 'null'] }}
+              </td>
+              <td [jhiTranslate]="'openPracticeLibraryApp.MobiusLoopTag.' + (practiceItem.mobiusLoopTag ?? 'null')">
+                {{
+                  { null: '', DISCOVERY: 'DISCOVERY', DELIVERY: 'DELIVERY', FOUNDATION: 'FOUNDATION', OPTIONS: 'OPTIONS' }[
+                    practiceItem.mobiusLoopTag ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>{{ practiceItem.what }}</td>
+              <td>{{ practiceItem.why }}</td>
+              <td>{{ practiceItem.how }}</td>
+              <td>{{ practiceItem.numberOfPeopleRequired }}</td>
+              <td>{{ practiceItem.timeLength }}</td>
+              <td>{{ practiceItem.expectedParticipants }}</td>
+              <td>
+                @if (practiceItem.coverImage) {
+                  <div>
+                    <a [routerLink]="['/media-asset', practiceItem.coverImage.id, 'view']">{{ practiceItem.coverImage.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/practice-item', practiceItem.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/practice-item', practiceItem.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(practiceItem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

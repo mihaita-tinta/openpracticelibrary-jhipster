@@ -1,8 +1,8 @@
 {
-  "name": "openpracticelibrary",
+  "name": "open-practice-library",
   "version": "0.0.1-SNAPSHOT",
   "private": true,
-  "description": "Description for Openpracticelibrary",
+  "description": "Description for Open Practice Library",
   "license": "UNLICENSED",
   "scripts": {
     "app:start": "./mvnw",
@@ -27,7 +27,7 @@
     "ci:frontend:test": "npm run ci:frontend:build && npm test",
     "clean-www": "rimraf target/classes/static/",
     "cleanup": "rimraf target/",
-    "docker:db:up": "echo \"Docker for db oracle not configured for application openpracticelibrary\"",
+    "docker:db:up": "echo \"Docker for db oracle not configured for application openPracticeLibrary\"",
     "java:docker": "./mvnw -ntp verify -DskipTests -Pprod jib:dockerBuild",
     "java:docker:arm64": "npm run java:docker -- -Djib-maven-plugin.architecture=arm64",
     "java:docker:dev": "npm run java:docker -- -Pdev,webapp",

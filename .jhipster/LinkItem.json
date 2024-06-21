@@ -1,0 +1,21 @@
+{
+  "annotations": {
+    "changelogDate": "20240621095920"
+  },
+  "applications": ["openPracticeLibrary"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sortIndex",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "LinkItem",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

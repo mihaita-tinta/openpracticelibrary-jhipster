@@ -1,0 +1,17 @@
+{
+  "annotations": {
+    "changelogDate": "20240621095918"
+  },
+  "applications": ["openPracticeLibrary"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "content",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Tag",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

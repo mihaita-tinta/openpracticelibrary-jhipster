@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-link-item-heading"
+        data-cy="LinkItemCreateUpdateHeading"
+        jhiTranslate="openPracticeLibraryApp.linkItem.home.createOrEditLabel"
+      >
+        Create or edit a Link Item
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="openPracticeLibraryApp.linkItem.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_url" jhiTranslate="openPracticeLibraryApp.linkItem.url">Url</label>
+          <input type="text" class="form-control" name="url" id="field_url" data-cy="url" formControlName="url" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_sortIndex" jhiTranslate="openPracticeLibraryApp.linkItem.sortIndex">Sort Index</label>
+          <input type="number" class="form-control" name="sortIndex" id="field_sortIndex" data-cy="sortIndex" formControlName="sortIndex" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_practiceItem" jhiTranslate="openPracticeLibraryApp.linkItem.practiceItem"
+            >Practice Item</label
+          >
+          <select
+            class="form-control"
+            id="field_practiceItem"
+            data-cy="practiceItem"
+            name="practiceItem"
+            formControlName="practiceItem"
+            [compareWith]="comparePracticeItem"
+          >
+            <option [ngValue]="null"></option>
+            @for (practiceItemOption of practiceItemsSharedCollection; track $index) {
+              <option [ngValue]="practiceItemOption">{{ practiceItemOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

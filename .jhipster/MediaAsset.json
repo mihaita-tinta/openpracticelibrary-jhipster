@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20240621095919"
+  },
+  "applications": ["openPracticeLibrary"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "MediaAssetType",
+      "fieldValues": "IMAGE,URL"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "sortIndex",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "MediaAsset",
+  "relationships": [
+    {
+      "otherEntityName": "practiceItem",
+      "otherEntityRelationshipName": "images",
+      "relationshipName": "practices",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

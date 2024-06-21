@@ -1,0 +1,110 @@
+{
+  "annotations": {
+    "changelogDate": "20240621095914"
+  },
+  "applications": ["openPracticeLibrary"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "objective",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "publishDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "publishedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "DRAFT,IN_REVIEW,READY,PUBLISHED"
+    },
+    {
+      "fieldName": "approvedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "approvedDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "authors",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "facilitationDifficulty",
+      "fieldType": "FacilitationDifficulty",
+      "fieldValues": "EASY,MODERATE,HIGH"
+    },
+    {
+      "fieldName": "mobiusLoopTag",
+      "fieldType": "MobiusLoopTag",
+      "fieldValues": "DISCOVERY,DELIVERY,FOUNDATION,OPTIONS"
+    },
+    {
+      "fieldName": "what",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "why",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "how",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "numberOfPeopleRequired",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timeLength",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expectedParticipants",
+      "fieldType": "String"
+    }
+  ],
+  "name": "PracticeItem",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "mediaAsset",
+      "relationshipName": "coverImage",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "tag",
+      "relationshipName": "tags",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "linkItem",
+      "relationshipName": "links",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "mediaAsset",
+      "otherEntityRelationshipName": "practices",
+      "relationshipName": "images",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

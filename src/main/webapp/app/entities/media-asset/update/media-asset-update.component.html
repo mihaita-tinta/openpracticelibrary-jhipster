@@ -1,0 +1,115 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-media-asset-heading"
+        data-cy="MediaAssetCreateUpdateHeading"
+        jhiTranslate="openPracticeLibraryApp.mediaAsset.home.createOrEditLabel"
+      >
+        Create or edit a Media Asset
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="openPracticeLibraryApp.mediaAsset.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_type" jhiTranslate="openPracticeLibraryApp.mediaAsset.type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'openPracticeLibraryApp.MediaAssetType.null' | translate }}</option>
+            @for (mediaAssetType of mediaAssetTypeValues; track $index) {
+              <option [value]="mediaAssetType">{{ 'openPracticeLibraryApp.MediaAssetType.' + mediaAssetType | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_content" jhiTranslate="openPracticeLibraryApp.mediaAsset.content">Content</label>
+          <div>
+            @if (editForm.get('content')!.value) {
+              <img
+                [src]="'data:' + editForm.get('contentContentType')!.value + ';base64,' + editForm.get('content')!.value"
+                style="max-height: 100px"
+                alt="mediaAsset"
+              />
+            }
+            @if (editForm.get('content')!.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start"
+                  >{{ editForm.get('contentContentType')!.value }}, {{ byteSize(editForm.get('content')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="clearInputImage('content', 'contentContentType', 'file_content')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_content"
+              data-cy="content"
+              (change)="setFileData($event, 'content', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="content" id="field_content" data-cy="content" formControlName="content" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="contentContentType"
+            id="field_contentContentType"
+            formControlName="contentContentType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_sortIndex" jhiTranslate="openPracticeLibraryApp.mediaAsset.sortIndex">Sort Index</label>
+          <input type="number" class="form-control" name="sortIndex" id="field_sortIndex" data-cy="sortIndex" formControlName="sortIndex" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_practices" jhiTranslate="openPracticeLibraryApp.mediaAsset.practices">Practices</label>
+          <select
+            class="form-control"
+            id="field_practices"
+            data-cy="practices"
+            name="practices"
+            formControlName="practices"
+            [compareWith]="comparePracticeItem"
+          >
+            <option [ngValue]="null"></option>
+            @for (practiceItemOption of practiceItemsSharedCollection; track $index) {
+              <option [ngValue]="practiceItemOption">{{ practiceItemOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

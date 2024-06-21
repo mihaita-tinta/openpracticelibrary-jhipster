@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (author()) {
+      <div>
+        <h2 data-cy="authorDetailsHeading"><span jhiTranslate="openPracticeLibraryApp.author.detail.title">Author</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ author()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.name">Name</span></dt>
+          <dd>
+            <span>{{ author()!.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.githubUsername">Github Username</span></dt>
+          <dd>
+            <span>{{ author()!.githubUsername }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.aboutYou">About You</span></dt>
+          <dd>
+            <span>{{ author()!.aboutYou }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.location">Location</span></dt>
+          <dd>
+            <span>{{ author()!.location }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.website">Website</span></dt>
+          <dd>
+            <span>{{ author()!.website }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.publishDate">Publish Date</span></dt>
+          <dd>
+            <span>{{ author()!.publishDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.publishedBy">Published By</span></dt>
+          <dd>
+            <span>{{ author()!.publishedBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'openPracticeLibraryApp.Status.' + (author()!.status ?? 'null')">{{
+              { null: '', DRAFT: 'DRAFT', IN_REVIEW: 'IN_REVIEW', READY: 'READY', PUBLISHED: 'PUBLISHED' }[author()!.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.approvedBy">Approved By</span></dt>
+          <dd>
+            <span>{{ author()!.approvedBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.author.approvedDate">Approved Date</span></dt>
+          <dd>
+            <span>{{ author()!.approvedDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/author', author()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

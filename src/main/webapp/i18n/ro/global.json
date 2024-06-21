@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "Openpracticelibrary",
+    "title": "OpenPracticeLibrary",
     "browsehappy": "Folosiți un browser <strong>vechi</strong>. Va rugăm <a href=\"http://browsehappy.com/?locale=en\"> să îl actualizați</a> pentru o experiență îmbunătațită.",
     "menu": {
       "home": "Acasă",
@@ -11,7 +11,14 @@
         "label": "Etichetă",
         "operation": "Operație",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "adminAuthority": "Authority",
+        "practiceItem": "Practice Item",
+        "blogItem": "Blog Item",
+        "pageItem": "Page Item",
+        "author": "Author",
+        "tag": "Tag",
+        "mediaAsset": "Media Asset",
+        "linkItem": "Link Item"
       },
       "account": {
         "main": "Cont",

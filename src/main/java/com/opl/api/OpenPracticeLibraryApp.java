@@ -21,18 +21,18 @@ import tech.jhipster.config.JHipsterConstants;
 
 @SpringBootApplication
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
-public class OpenpracticelibraryApp {
+public class OpenPracticeLibraryApp {
 
-    private static final Logger log = LoggerFactory.getLogger(OpenpracticelibraryApp.class);
+    private static final Logger log = LoggerFactory.getLogger(OpenPracticeLibraryApp.class);
 
     private final Environment env;
 
-    public OpenpracticelibraryApp(Environment env) {
+    public OpenPracticeLibraryApp(Environment env) {
         this.env = env;
     }
 
     /**
-     * Initializes openpracticelibrary.
+     * Initializes openPracticeLibrary.
      * <p>
      * Spring profiles can be configured with a program argument --spring.profiles.active=your-active-profile
      * <p>
@@ -65,7 +65,7 @@ public class OpenpracticelibraryApp {
      * @param args the command line arguments.
      */
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(OpenpracticelibraryApp.class);
+        SpringApplication app = new SpringApplication(OpenPracticeLibraryApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);

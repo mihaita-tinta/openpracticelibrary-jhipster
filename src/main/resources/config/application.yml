@@ -89,7 +89,7 @@ management:
 
 spring:
   application:
-    name: openpracticelibrary
+    name: openPracticeLibrary
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -147,13 +147,13 @@ spring:
           authorities-claim-name: auth
   task:
     execution:
-      thread-name-prefix: openpracticelibrary-task-
+      thread-name-prefix: open-practice-library-task-
       pool:
         core-size: 2
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: openpracticelibrary-scheduling-
+      thread-name-prefix: open-practice-library-scheduling-
       pool:
         size: 2
   thymeleaf:
@@ -184,7 +184,7 @@ info:
 
 jhipster:
   clientApp:
-    name: 'openpracticelibraryApp'
+    name: 'openPracticeLibraryApp'
   # By default CORS is disabled. Uncomment to enable.
   # cors:
   #   allowed-origins: "http://localhost:8100,http://localhost:9000"
@@ -194,12 +194,12 @@ jhipster:
   #   allow-credentials: true
   #   max-age: 1800
   mail:
-    from: openpracticelibrary@localhost
+    from: openPracticeLibrary@localhost
   api-docs:
     default-include-pattern: /api/**
     management-include-pattern: /management/**
-    title: Openpracticelibrary API
-    description: Openpracticelibrary API documentation
+    title: Open Practice Library API
+    description: Open Practice Library API documentation
     version: 0.0.1
     terms-of-service-url:
     contact-name:

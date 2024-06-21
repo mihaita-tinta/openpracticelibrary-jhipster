@@ -1,0 +1,30 @@
+{
+  "openPracticeLibraryApp": {
+    "mediaAsset": {
+      "home": {
+        "title": "Media Assets",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Creeare o nouă entitate Media Asset",
+        "createOrEditLabel": "Creeare sau editare Media Asset",
+        "notFound": "No Media Assets found"
+      },
+      "created": "A fost creată o nouă entitate Media Asset cu identificatorul {{ param }}",
+      "updated": "Media Asset cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Media Asset cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Media Asset {{ id }}?"
+      },
+      "detail": {
+        "title": "Media Asset"
+      },
+      "id": "ID",
+      "type": "Type",
+      "content": "Content",
+      "sortIndex": "Sort Index",
+      "practices": "Practices",
+      "practiceItem": "Practice Item",
+      "blogItem": "Blog Item",
+      "pageItem": "Page Item"
+    }
+  }
+}

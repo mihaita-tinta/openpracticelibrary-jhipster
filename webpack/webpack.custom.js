@@ -30,7 +30,7 @@ module.exports = async (config, options, targetOptions) => {
         },
       }),
       new WebpackNotifierPlugin({
-        title: 'Openpracticelibrary',
+        title: 'Open Practice Library',
         contentImage: path.join(__dirname, 'logo-jhipster.png'),
       }),
     );

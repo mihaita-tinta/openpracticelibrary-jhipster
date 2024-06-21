@@ -1,0 +1,26 @@
+{
+  "openPracticeLibraryApp": {
+    "linkItem": {
+      "home": {
+        "title": "Link Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Creeare o nouă entitate Link Item",
+        "createOrEditLabel": "Creeare sau editare Link Item",
+        "notFound": "No Link Items found"
+      },
+      "created": "A fost creată o nouă entitate Link Item cu identificatorul {{ param }}",
+      "updated": "Link Item cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Link Item cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Link Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Link Item"
+      },
+      "id": "ID",
+      "url": "Url",
+      "sortIndex": "Sort Index",
+      "practiceItem": "Practice Item"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "openPracticeLibraryApp": {
+    "practiceItem": {
+      "home": {
+        "title": "Practice Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Practice Item",
+        "createOrEditLabel": "Create or edit a Practice Item",
+        "notFound": "No Practice Items found"
+      },
+      "created": "A new Practice Item is created with identifier {{ param }}",
+      "updated": "A Practice Item is updated with identifier {{ param }}",
+      "deleted": "A Practice Item is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Practice Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Practice Item"
+      },
+      "id": "ID",
+      "title": "Title",
+      "objective": "Objective",
+      "publishDate": "Publish Date",
+      "publishedBy": "Published By",
+      "status": "Status",
+      "approvedBy": "Approved By",
+      "approvedDate": "Approved Date",
+      "authors": "Authors",
+      "facilitationDifficulty": "Facilitation Difficulty",
+      "mobiusLoopTag": "Mobius Loop Tag",
+      "what": "What",
+      "why": "Why",
+      "how": "How",
+      "numberOfPeopleRequired": "Number Of People Required",
+      "timeLength": "Time Length",
+      "expectedParticipants": "Expected Participants",
+      "coverImage": "Cover Image",
+      "tags": "Tags",
+      "links": "Links",
+      "images": "Images"
+    }
+  }
+}

@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-blog-item-heading"
+        data-cy="BlogItemCreateUpdateHeading"
+        jhiTranslate="openPracticeLibraryApp.blogItem.home.createOrEditLabel"
+      >
+        Create or edit a Blog Item
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="openPracticeLibraryApp.blogItem.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_title" jhiTranslate="openPracticeLibraryApp.blogItem.title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_subtitle" jhiTranslate="openPracticeLibraryApp.blogItem.subtitle">Subtitle</label>
+          <input type="text" class="form-control" name="subtitle" id="field_subtitle" data-cy="subtitle" formControlName="subtitle" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_publishDate" jhiTranslate="openPracticeLibraryApp.blogItem.publishDate">Publish Date</label>
+          <div class="d-flex">
+            <input
+              id="field_publishDate"
+              data-cy="publishDate"
+              type="datetime-local"
+              class="form-control"
+              name="publishDate"
+              formControlName="publishDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_publishedBy" jhiTranslate="openPracticeLibraryApp.blogItem.publishedBy">Published By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="publishedBy"
+            id="field_publishedBy"
+            data-cy="publishedBy"
+            formControlName="publishedBy"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="openPracticeLibraryApp.blogItem.status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'openPracticeLibraryApp.Status.null' | translate }}</option>
+            @for (status of statusValues; track $index) {
+              <option [value]="status">{{ 'openPracticeLibraryApp.Status.' + status | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_approvedBy" jhiTranslate="openPracticeLibraryApp.blogItem.approvedBy">Approved By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="approvedBy"
+            id="field_approvedBy"
+            data-cy="approvedBy"
+            formControlName="approvedBy"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_approvedDate" jhiTranslate="openPracticeLibraryApp.blogItem.approvedDate"
+            >Approved Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_approvedDate"
+              data-cy="approvedDate"
+              type="datetime-local"
+              class="form-control"
+              name="approvedDate"
+              formControlName="approvedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_authors" jhiTranslate="openPracticeLibraryApp.blogItem.authors">Authors</label>
+          <input type="text" class="form-control" name="authors" id="field_authors" data-cy="authors" formControlName="authors" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_jumbotronAltText" jhiTranslate="openPracticeLibraryApp.blogItem.jumbotronAltText"
+            >Jumbotron Alt Text</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="jumbotronAltText"
+            id="field_jumbotronAltText"
+            data-cy="jumbotronAltText"
+            formControlName="jumbotronAltText"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_body" jhiTranslate="openPracticeLibraryApp.blogItem.body">Body</label>
+          <textarea class="form-control" name="body" id="field_body" data-cy="body" formControlName="body"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_jumbotronImage" jhiTranslate="openPracticeLibraryApp.blogItem.jumbotronImage"
+            >Jumbotron Image</label
+          >
+          <select
+            class="form-control"
+            id="field_jumbotronImage"
+            data-cy="jumbotronImage"
+            name="jumbotronImage"
+            formControlName="jumbotronImage"
+            [compareWith]="compareMediaAsset"
+          >
+            <option [ngValue]="null"></option>
+            @for (mediaAssetOption of jumbotronImagesCollection; track $index) {
+              <option [ngValue]="mediaAssetOption">{{ mediaAssetOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

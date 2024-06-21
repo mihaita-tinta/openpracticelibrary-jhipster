@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.opl.api</groupId>
-    <artifactId>openpracticelibrary</artifactId>
+    <artifactId>open-practice-library</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Openpracticelibrary</name>
-    <description>Description for Openpracticelibrary</description>
+    <name>Open Practice Library</name>
+    <description>Description for Open Practice Library</description>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -31,7 +31,7 @@
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <start-class>com.opl.api.OpenpracticelibraryApp</start-class>
+        <start-class>com.opl.api.OpenPracticeLibraryApp</start-class>
         <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx1G</argLine>
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
         <run.addResources>false</run.addResources>
@@ -890,7 +890,7 @@
                                 <skipValidateSpec>false</skipValidateSpec>
                                 <configOptions>
                                     <delegatePattern>true</delegatePattern>
-                                    <title>openpracticelibrary</title>
+                                    <title>open-practice-library</title>
                                     <useSpringBoot3>true</useSpringBoot3>
                                 </configOptions>
                             </configuration>
@@ -924,8 +924,8 @@
                 <profile.test>testdev</profile.test>
                 <liquibase-plugin.hibernate-dialect>org.hibernate.dialect.H2Dialect</liquibase-plugin.hibernate-dialect>
                 <liquibase-plugin.driver>org.h2.Driver</liquibase-plugin.driver>
-                <liquibase-plugin.url>jdbc:h2:file:${project.build.directory}/h2db/db/openpracticelibrary</liquibase-plugin.url>
-                <liquibase-plugin.username>openpracticelibrary</liquibase-plugin.username>
+                <liquibase-plugin.url>jdbc:h2:file:${project.build.directory}/h2db/db/openPracticeLibrary</liquibase-plugin.url>
+                <liquibase-plugin.username>openPracticeLibrary</liquibase-plugin.username>
                 <liquibase-plugin.password/>
             </properties>
             <dependencies>

@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pageItem()) {
+      <div>
+        <h2 data-cy="pageItemDetailsHeading"><span jhiTranslate="openPracticeLibraryApp.pageItem.detail.title">Page Item</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ pageItem()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.title">Title</span></dt>
+          <dd>
+            <span>{{ pageItem()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.authors">Authors</span></dt>
+          <dd>
+            <span>{{ pageItem()!.authors }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.menu">Menu</span></dt>
+          <dd>
+            <span>{{ pageItem()!.menu }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.menuWeight">Menu Weight</span></dt>
+          <dd>
+            <span>{{ pageItem()!.menuWeight }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.publishDate">Publish Date</span></dt>
+          <dd>
+            <span>{{ pageItem()!.publishDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.publishedBy">Published By</span></dt>
+          <dd>
+            <span>{{ pageItem()!.publishedBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'openPracticeLibraryApp.Status.' + (pageItem()!.status ?? 'null')">{{
+              { null: '', DRAFT: 'DRAFT', IN_REVIEW: 'IN_REVIEW', READY: 'READY', PUBLISHED: 'PUBLISHED' }[pageItem()!.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.approvedBy">Approved By</span></dt>
+          <dd>
+            <span>{{ pageItem()!.approvedBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.approvedDate">Approved Date</span></dt>
+          <dd>
+            <span>{{ pageItem()!.approvedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.jumbotronAltText">Jumbotron Alt Text</span></dt>
+          <dd>
+            <span>{{ pageItem()!.jumbotronAltText }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.body">Body</span></dt>
+          <dd>
+            <span>{{ pageItem()!.body }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.pageItem.jumbotronImage">Jumbotron Image</span></dt>
+          <dd>
+            @if (pageItem()!.jumbotronImage) {
+              <div>
+                <a [routerLink]="['/media-asset', pageItem()!.jumbotronImage?.id, 'view']">{{ pageItem()!.jumbotronImage?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/page-item', pageItem()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

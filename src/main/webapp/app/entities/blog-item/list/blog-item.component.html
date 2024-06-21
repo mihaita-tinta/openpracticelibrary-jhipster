@@ -1,0 +1,175 @@
+<div>
+  <h2 id="page-heading" data-cy="BlogItemHeading">
+    <span jhiTranslate="openPracticeLibraryApp.blogItem.home.title">Blog Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="openPracticeLibraryApp.blogItem.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-blog-item"
+        [routerLink]="['/blog-item/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="openPracticeLibraryApp.blogItem.home.createLabel">Create a new Blog Item</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (blogItems?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="openPracticeLibraryApp.blogItem.home.notFound">No Blog Items found</span>
+    </div>
+  }
+
+  @if (blogItems && blogItems.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.title">Title</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="subtitle">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.subtitle">Subtitle</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="publishDate">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.publishDate">Publish Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="publishedBy">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.publishedBy">Published By</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.status">Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="approvedBy">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.approvedBy">Approved By</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="approvedDate">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.approvedDate">Approved Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="authors">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.authors">Authors</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="jumbotronAltText">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.jumbotronAltText">Jumbotron Alt Text</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="body">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.body">Body</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="jumbotronImage.id">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.blogItem.jumbotronImage">Jumbotron Image</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (blogItem of blogItems; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/blog-item', blogItem.id, 'view']">{{ blogItem.id }}</a>
+              </td>
+              <td>{{ blogItem.title }}</td>
+              <td>{{ blogItem.subtitle }}</td>
+              <td>{{ blogItem.publishDate | formatMediumDatetime }}</td>
+              <td>{{ blogItem.publishedBy }}</td>
+              <td [jhiTranslate]="'openPracticeLibraryApp.Status.' + (blogItem.status ?? 'null')">
+                {{
+                  { null: '', DRAFT: 'DRAFT', IN_REVIEW: 'IN_REVIEW', READY: 'READY', PUBLISHED: 'PUBLISHED' }[blogItem.status ?? 'null']
+                }}
+              </td>
+              <td>{{ blogItem.approvedBy }}</td>
+              <td>{{ blogItem.approvedDate | formatMediumDatetime }}</td>
+              <td>{{ blogItem.authors }}</td>
+              <td>{{ blogItem.jumbotronAltText }}</td>
+              <td>{{ blogItem.body }}</td>
+              <td>
+                @if (blogItem.jumbotronImage) {
+                  <div>
+                    <a [routerLink]="['/media-asset', blogItem.jumbotronImage.id, 'view']">{{ blogItem.jumbotronImage.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/blog-item', blogItem.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/blog-item', blogItem.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(blogItem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

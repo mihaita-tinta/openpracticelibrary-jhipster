@@ -1,0 +1,35 @@
+{
+  "openPracticeLibraryApp": {
+    "pageItem": {
+      "home": {
+        "title": "Page Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Maak een nieuwe Page Item",
+        "createOrEditLabel": "Maak of wijzig een Page Item",
+        "notFound": "No Page Items found"
+      },
+      "created": "A new Page Item is created with identifier {{ param }}",
+      "updated": "A Page Item is updated with identifier {{ param }}",
+      "deleted": "A Page Item is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Bent u zeker dat u Page Item {{ id }} wilt verwijderen?"
+      },
+      "detail": {
+        "title": "Page Item"
+      },
+      "id": "ID",
+      "title": "Title",
+      "authors": "Authors",
+      "menu": "Menu",
+      "menuWeight": "Menu Weight",
+      "publishDate": "Publish Date",
+      "publishedBy": "Published By",
+      "status": "Status",
+      "approvedBy": "Approved By",
+      "approvedDate": "Approved Date",
+      "jumbotronAltText": "Jumbotron Alt Text",
+      "body": "Body",
+      "jumbotronImage": "Jumbotron Image"
+    }
+  }
+}

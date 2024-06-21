@@ -1,0 +1,128 @@
+<div>
+  <h2 id="page-heading" data-cy="MediaAssetHeading">
+    <span jhiTranslate="openPracticeLibraryApp.mediaAsset.home.title">Media Assets</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="openPracticeLibraryApp.mediaAsset.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-media-asset"
+        [routerLink]="['/media-asset/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="openPracticeLibraryApp.mediaAsset.home.createLabel">Create a new Media Asset</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (mediaAssets?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="openPracticeLibraryApp.mediaAsset.home.notFound">No Media Assets found</span>
+    </div>
+  }
+
+  @if (mediaAssets && mediaAssets.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="type">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.mediaAsset.type">Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="content">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.mediaAsset.content">Content</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sortIndex">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.mediaAsset.sortIndex">Sort Index</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="practices.id">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.mediaAsset.practices">Practices</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (mediaAsset of mediaAssets; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/media-asset', mediaAsset.id, 'view']">{{ mediaAsset.id }}</a>
+              </td>
+              <td [jhiTranslate]="'openPracticeLibraryApp.MediaAssetType.' + (mediaAsset.type ?? 'null')">
+                {{ { null: '', IMAGE: 'IMAGE', URL: 'URL' }[mediaAsset.type ?? 'null'] }}
+              </td>
+              <td>
+                @if (mediaAsset.content) {
+                  <a (click)="openFile(mediaAsset.content, mediaAsset.contentContentType)">
+                    <img
+                      [src]="'data:' + mediaAsset.contentContentType + ';base64,' + mediaAsset.content"
+                      style="max-height: 30px"
+                      alt="mediaAsset"
+                    />
+                  </a>
+                  <span>{{ mediaAsset.contentContentType }}, {{ byteSize(mediaAsset.content) }}</span>
+                }
+              </td>
+              <td>{{ mediaAsset.sortIndex }}</td>
+              <td>
+                @if (mediaAsset.practices) {
+                  <div>
+                    <a [routerLink]="['/practice-item', mediaAsset.practices.id, 'view']">{{ mediaAsset.practices.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/media-asset', mediaAsset.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/media-asset', mediaAsset.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(mediaAsset)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

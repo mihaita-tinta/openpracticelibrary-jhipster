@@ -1,0 +1,34 @@
+{
+  "openPracticeLibraryApp": {
+    "blogItem": {
+      "home": {
+        "title": "Blog Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Blog Item",
+        "createOrEditLabel": "Create or edit a Blog Item",
+        "notFound": "No Blog Items found"
+      },
+      "created": "A new Blog Item is created with identifier {{ param }}",
+      "updated": "A Blog Item is updated with identifier {{ param }}",
+      "deleted": "A Blog Item is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Blog Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Blog Item"
+      },
+      "id": "ID",
+      "title": "Title",
+      "subtitle": "Subtitle",
+      "publishDate": "Publish Date",
+      "publishedBy": "Published By",
+      "status": "Status",
+      "approvedBy": "Approved By",
+      "approvedDate": "Approved Date",
+      "authors": "Authors",
+      "jumbotronAltText": "Jumbotron Alt Text",
+      "body": "Body",
+      "jumbotronImage": "Jumbotron Image"
+    }
+  }
+}

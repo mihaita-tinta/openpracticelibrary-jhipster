@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "Openpracticelibrary",
+    "title": "OpenPracticeLibrary",
     "browsehappy": "U gebruikt een <strong>verouderde</strong> browser. <a href=\"http://browsehappy.com/?locale=en\">upgrade uw browser</a> om de bruikbaarheid te verbeteren.",
     "menu": {
       "home": "Startpagina",
@@ -8,7 +8,14 @@
       "entities": {
         "main": "Entiteiten",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "adminAuthority": "Authority",
+        "practiceItem": "Practice Item",
+        "blogItem": "Blog Item",
+        "pageItem": "Page Item",
+        "author": "Author",
+        "tag": "Tag",
+        "mediaAsset": "Media Asset",
+        "linkItem": "Link Item"
       },
       "account": {
         "main": "Gebruiker",

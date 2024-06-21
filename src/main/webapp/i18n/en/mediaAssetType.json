@@ -1,0 +1,9 @@
+{
+  "openPracticeLibraryApp": {
+    "MediaAssetType": {
+      "null": "",
+      "IMAGE": "IMAGE",
+      "URL": "URL"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "openPracticeLibraryApp": {
+    "mediaAsset": {
+      "home": {
+        "title": "Media Assets",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Maak een nieuwe Media Asset",
+        "createOrEditLabel": "Maak of wijzig een Media Asset",
+        "notFound": "No Media Assets found"
+      },
+      "created": "A new Media Asset is created with identifier {{ param }}",
+      "updated": "A Media Asset is updated with identifier {{ param }}",
+      "deleted": "A Media Asset is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Bent u zeker dat u Media Asset {{ id }} wilt verwijderen?"
+      },
+      "detail": {
+        "title": "Media Asset"
+      },
+      "id": "ID",
+      "type": "Type",
+      "content": "Content",
+      "sortIndex": "Sort Index",
+      "practices": "Practices",
+      "practiceItem": "Practice Item",
+      "blogItem": "Blog Item",
+      "pageItem": "Page Item"
+    }
+  }
+}

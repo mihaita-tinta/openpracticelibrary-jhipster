@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (blogItem()) {
+      <div>
+        <h2 data-cy="blogItemDetailsHeading"><span jhiTranslate="openPracticeLibraryApp.blogItem.detail.title">Blog Item</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ blogItem()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.title">Title</span></dt>
+          <dd>
+            <span>{{ blogItem()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.subtitle">Subtitle</span></dt>
+          <dd>
+            <span>{{ blogItem()!.subtitle }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.publishDate">Publish Date</span></dt>
+          <dd>
+            <span>{{ blogItem()!.publishDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.publishedBy">Published By</span></dt>
+          <dd>
+            <span>{{ blogItem()!.publishedBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'openPracticeLibraryApp.Status.' + (blogItem()!.status ?? 'null')">{{
+              { null: '', DRAFT: 'DRAFT', IN_REVIEW: 'IN_REVIEW', READY: 'READY', PUBLISHED: 'PUBLISHED' }[blogItem()!.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.approvedBy">Approved By</span></dt>
+          <dd>
+            <span>{{ blogItem()!.approvedBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.approvedDate">Approved Date</span></dt>
+          <dd>
+            <span>{{ blogItem()!.approvedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.authors">Authors</span></dt>
+          <dd>
+            <span>{{ blogItem()!.authors }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.jumbotronAltText">Jumbotron Alt Text</span></dt>
+          <dd>
+            <span>{{ blogItem()!.jumbotronAltText }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.body">Body</span></dt>
+          <dd>
+            <span>{{ blogItem()!.body }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.blogItem.jumbotronImage">Jumbotron Image</span></dt>
+          <dd>
+            @if (blogItem()!.jumbotronImage) {
+              <div>
+                <a [routerLink]="['/media-asset', blogItem()!.jumbotronImage?.id, 'view']">{{ blogItem()!.jumbotronImage?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/blog-item', blogItem()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "openpracticelibrary": {
+    "open-practice-library": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -76,15 +76,15 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "buildTarget": "openpracticelibrary:build:development",
+            "buildTarget": "open-practice-library:build:development",
             "port": 4200
           },
           "configurations": {
             "production": {
-              "buildTarget": "openpracticelibrary:build:production"
+              "buildTarget": "open-practice-library:build:production"
             },
             "development": {
-              "buildTarget": "openpracticelibrary:build:development"
+              "buildTarget": "open-practice-library:build:development"
             }
           },
           "defaultConfiguration": "development"

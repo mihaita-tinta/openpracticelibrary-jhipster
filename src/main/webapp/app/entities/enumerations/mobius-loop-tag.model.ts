@@ -1,0 +1,9 @@
+export enum MobiusLoopTag {
+  DISCOVERY = 'DISCOVERY',
+
+  DELIVERY = 'DELIVERY',
+
+  FOUNDATION = 'FOUNDATION',
+
+  OPTIONS = 'OPTIONS',
+}

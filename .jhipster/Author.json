@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20240621095917"
+  },
+  "applications": ["openPracticeLibrary"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "githubUsername",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aboutYou",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "website",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "publishDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "publishedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "DRAFT,IN_REVIEW,READY,PUBLISHED"
+    },
+    {
+      "fieldName": "approvedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "approvedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Author",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

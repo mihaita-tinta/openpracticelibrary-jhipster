@@ -19,7 +19,6 @@ entity PracticeItem {
     approvedBy String
     approvedDate ZonedDateTime
     authors String
-    tags String
     facilitationDifficulty FacilitationDifficulty
     mobiusLoopTag MobiusLoopTag
     what TextBlob
@@ -82,7 +81,7 @@ entity MediaAsset {
     content ImageBlob
     sortIndex Integer
 }
-enum MediaItemType {
+enum MediaAssetType {
      IMAGE, URL
 }
 entity LinkItem {
@@ -99,15 +98,15 @@ enum Status {
 
 relationship OneToOne {
 
-    PracticeItem to MediaAsset{coverImage}
-    BlogItem to MediaAsset{jumbotronImage}
-    PageItem to MediaAsset{jumbotronImage}
-    
+    PracticeItem{coverImage} to MediaAsset
+    BlogItem{jumbotronImage} to MediaAsset
+    PageItem{jumbotronImage} to MediaAsset
+
 }
 relationship OneToMany {
-	PracticeItem to Tag{tags}
-    PracticeItem to LinkItem{links}
-    PracticeItem to MediaAsset{images}
+	PracticeItem{tags} to Tag
+    PracticeItem{links} to LinkItem
+    PracticeItem{images} to MediaAsset{practices}
 }
 
 // Set pagination options

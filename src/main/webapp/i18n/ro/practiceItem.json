@@ -1,0 +1,43 @@
+{
+  "openPracticeLibraryApp": {
+    "practiceItem": {
+      "home": {
+        "title": "Practice Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Creeare o nouă entitate Practice Item",
+        "createOrEditLabel": "Creeare sau editare Practice Item",
+        "notFound": "No Practice Items found"
+      },
+      "created": "A fost creată o nouă entitate Practice Item cu identificatorul {{ param }}",
+      "updated": "Practice Item cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Practice Item cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Practice Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Practice Item"
+      },
+      "id": "ID",
+      "title": "Title",
+      "objective": "Objective",
+      "publishDate": "Publish Date",
+      "publishedBy": "Published By",
+      "status": "Status",
+      "approvedBy": "Approved By",
+      "approvedDate": "Approved Date",
+      "authors": "Authors",
+      "facilitationDifficulty": "Facilitation Difficulty",
+      "mobiusLoopTag": "Mobius Loop Tag",
+      "what": "What",
+      "why": "Why",
+      "how": "How",
+      "numberOfPeopleRequired": "Number Of People Required",
+      "timeLength": "Time Length",
+      "expectedParticipants": "Expected Participants",
+      "coverImage": "Cover Image",
+      "tags": "Tags",
+      "links": "Links",
+      "images": "Images"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "openPracticeLibraryApp": {
+    "linkItem": {
+      "home": {
+        "title": "Link Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Maak een nieuwe Link Item",
+        "createOrEditLabel": "Maak of wijzig een Link Item",
+        "notFound": "No Link Items found"
+      },
+      "created": "A new Link Item is created with identifier {{ param }}",
+      "updated": "A Link Item is updated with identifier {{ param }}",
+      "deleted": "A Link Item is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Bent u zeker dat u Link Item {{ id }} wilt verwijderen?"
+      },
+      "detail": {
+        "title": "Link Item"
+      },
+      "id": "ID",
+      "url": "Url",
+      "sortIndex": "Sort Index",
+      "practiceItem": "Practice Item"
+    }
+  }
+}

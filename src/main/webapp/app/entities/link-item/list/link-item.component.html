@@ -1,0 +1,107 @@
+<div>
+  <h2 id="page-heading" data-cy="LinkItemHeading">
+    <span jhiTranslate="openPracticeLibraryApp.linkItem.home.title">Link Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="openPracticeLibraryApp.linkItem.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-link-item"
+        [routerLink]="['/link-item/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="openPracticeLibraryApp.linkItem.home.createLabel">Create a new Link Item</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (linkItems?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="openPracticeLibraryApp.linkItem.home.notFound">No Link Items found</span>
+    </div>
+  }
+
+  @if (linkItems && linkItems.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="url">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.linkItem.url">Url</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sortIndex">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.linkItem.sortIndex">Sort Index</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="practiceItem.id">
+              <div class="d-flex">
+                <span jhiTranslate="openPracticeLibraryApp.linkItem.practiceItem">Practice Item</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (linkItem of linkItems; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/link-item', linkItem.id, 'view']">{{ linkItem.id }}</a>
+              </td>
+              <td>{{ linkItem.url }}</td>
+              <td>{{ linkItem.sortIndex }}</td>
+              <td>
+                @if (linkItem.practiceItem) {
+                  <div>
+                    <a [routerLink]="['/practice-item', linkItem.practiceItem.id, 'view']">{{ linkItem.practiceItem.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/link-item', linkItem.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/link-item', linkItem.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(linkItem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

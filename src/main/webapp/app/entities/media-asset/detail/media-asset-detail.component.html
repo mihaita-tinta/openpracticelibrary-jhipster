@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (mediaAsset()) {
+      <div>
+        <h2 data-cy="mediaAssetDetailsHeading"><span jhiTranslate="openPracticeLibraryApp.mediaAsset.detail.title">Media Asset</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ mediaAsset()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.mediaAsset.type">Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'openPracticeLibraryApp.MediaAssetType.' + (mediaAsset()!.type ?? 'null')">{{
+              { null: '', IMAGE: 'IMAGE', URL: 'URL' }[mediaAsset()!.type ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.mediaAsset.content">Content</span></dt>
+          <dd>
+            @if (mediaAsset()!.content) {
+              <div>
+                <a (click)="openFile(mediaAsset()!.content ?? '', mediaAsset()!.contentContentType)">
+                  <img
+                    [src]="'data:' + mediaAsset()!.contentContentType + ';base64,' + mediaAsset()!.content"
+                    style="max-width: 100%"
+                    alt="mediaAsset"
+                  />
+                </a>
+                {{ mediaAsset()!.contentContentType }}, {{ byteSize(mediaAsset()!.content ?? '') }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.mediaAsset.sortIndex">Sort Index</span></dt>
+          <dd>
+            <span>{{ mediaAsset()!.sortIndex }}</span>
+          </dd>
+          <dt><span jhiTranslate="openPracticeLibraryApp.mediaAsset.practices">Practices</span></dt>
+          <dd>
+            @if (mediaAsset()!.practices) {
+              <div>
+                <a [routerLink]="['/practice-item', mediaAsset()!.practices?.id, 'view']">{{ mediaAsset()!.practices?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/media-asset', mediaAsset()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

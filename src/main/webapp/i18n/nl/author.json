@@ -1,0 +1,33 @@
+{
+  "openPracticeLibraryApp": {
+    "author": {
+      "home": {
+        "title": "Authors",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Maak een nieuwe Author",
+        "createOrEditLabel": "Maak of wijzig een Author",
+        "notFound": "No Authors found"
+      },
+      "created": "A new Author is created with identifier {{ param }}",
+      "updated": "A Author is updated with identifier {{ param }}",
+      "deleted": "A Author is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Bent u zeker dat u Author {{ id }} wilt verwijderen?"
+      },
+      "detail": {
+        "title": "Author"
+      },
+      "id": "ID",
+      "name": "Name",
+      "githubUsername": "Github Username",
+      "aboutYou": "About You",
+      "location": "Location",
+      "website": "Website",
+      "publishDate": "Publish Date",
+      "publishedBy": "Published By",
+      "status": "Status",
+      "approvedBy": "Approved By",
+      "approvedDate": "Approved Date"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity PageItem.
+    -->
+    <changeSet id="20240621095916-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="jumbotron_image_id"
+                                 baseTableName="page_item"
+                                 constraintName="fk_page_item__jumbotron_image_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="media_asset"
+                                 />
+    </changeSet>
+</databaseChangeLog>

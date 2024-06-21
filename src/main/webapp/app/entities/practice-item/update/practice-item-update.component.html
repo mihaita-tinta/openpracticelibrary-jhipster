@@ -1,0 +1,241 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-practice-item-heading"
+        data-cy="PracticeItemCreateUpdateHeading"
+        jhiTranslate="openPracticeLibraryApp.practiceItem.home.createOrEditLabel"
+      >
+        Create or edit a Practice Item
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="openPracticeLibraryApp.practiceItem.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_title" jhiTranslate="openPracticeLibraryApp.practiceItem.title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_objective" jhiTranslate="openPracticeLibraryApp.practiceItem.objective">Objective</label>
+          <input type="text" class="form-control" name="objective" id="field_objective" data-cy="objective" formControlName="objective" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_publishDate" jhiTranslate="openPracticeLibraryApp.practiceItem.publishDate"
+            >Publish Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_publishDate"
+              data-cy="publishDate"
+              type="datetime-local"
+              class="form-control"
+              name="publishDate"
+              formControlName="publishDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_publishedBy" jhiTranslate="openPracticeLibraryApp.practiceItem.publishedBy"
+            >Published By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="publishedBy"
+            id="field_publishedBy"
+            data-cy="publishedBy"
+            formControlName="publishedBy"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="openPracticeLibraryApp.practiceItem.status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'openPracticeLibraryApp.Status.null' | translate }}</option>
+            @for (status of statusValues; track $index) {
+              <option [value]="status">{{ 'openPracticeLibraryApp.Status.' + status | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_approvedBy" jhiTranslate="openPracticeLibraryApp.practiceItem.approvedBy">Approved By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="approvedBy"
+            id="field_approvedBy"
+            data-cy="approvedBy"
+            formControlName="approvedBy"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_approvedDate" jhiTranslate="openPracticeLibraryApp.practiceItem.approvedDate"
+            >Approved Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_approvedDate"
+              data-cy="approvedDate"
+              type="datetime-local"
+              class="form-control"
+              name="approvedDate"
+              formControlName="approvedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_authors" jhiTranslate="openPracticeLibraryApp.practiceItem.authors">Authors</label>
+          <input type="text" class="form-control" name="authors" id="field_authors" data-cy="authors" formControlName="authors" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_facilitationDifficulty"
+            jhiTranslate="openPracticeLibraryApp.practiceItem.facilitationDifficulty"
+            >Facilitation Difficulty</label
+          >
+          <select
+            class="form-control"
+            name="facilitationDifficulty"
+            formControlName="facilitationDifficulty"
+            id="field_facilitationDifficulty"
+            data-cy="facilitationDifficulty"
+          >
+            <option [ngValue]="null">{{ 'openPracticeLibraryApp.FacilitationDifficulty.null' | translate }}</option>
+            @for (facilitationDifficulty of facilitationDifficultyValues; track $index) {
+              <option [value]="facilitationDifficulty">
+                {{ 'openPracticeLibraryApp.FacilitationDifficulty.' + facilitationDifficulty | translate }}
+              </option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_mobiusLoopTag" jhiTranslate="openPracticeLibraryApp.practiceItem.mobiusLoopTag"
+            >Mobius Loop Tag</label
+          >
+          <select
+            class="form-control"
+            name="mobiusLoopTag"
+            formControlName="mobiusLoopTag"
+            id="field_mobiusLoopTag"
+            data-cy="mobiusLoopTag"
+          >
+            <option [ngValue]="null">{{ 'openPracticeLibraryApp.MobiusLoopTag.null' | translate }}</option>
+            @for (mobiusLoopTag of mobiusLoopTagValues; track $index) {
+              <option [value]="mobiusLoopTag">{{ 'openPracticeLibraryApp.MobiusLoopTag.' + mobiusLoopTag | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_what" jhiTranslate="openPracticeLibraryApp.practiceItem.what">What</label>
+          <textarea class="form-control" name="what" id="field_what" data-cy="what" formControlName="what"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_why" jhiTranslate="openPracticeLibraryApp.practiceItem.why">Why</label>
+          <textarea class="form-control" name="why" id="field_why" data-cy="why" formControlName="why"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_how" jhiTranslate="openPracticeLibraryApp.practiceItem.how">How</label>
+          <textarea class="form-control" name="how" id="field_how" data-cy="how" formControlName="how"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_numberOfPeopleRequired"
+            jhiTranslate="openPracticeLibraryApp.practiceItem.numberOfPeopleRequired"
+            >Number Of People Required</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="numberOfPeopleRequired"
+            id="field_numberOfPeopleRequired"
+            data-cy="numberOfPeopleRequired"
+            formControlName="numberOfPeopleRequired"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_timeLength" jhiTranslate="openPracticeLibraryApp.practiceItem.timeLength">Time Length</label>
+          <input
+            type="text"
+            class="form-control"
+            name="timeLength"
+            id="field_timeLength"
+            data-cy="timeLength"
+            formControlName="timeLength"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_expectedParticipants" jhiTranslate="openPracticeLibraryApp.practiceItem.expectedParticipants"
+            >Expected Participants</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="expectedParticipants"
+            id="field_expectedParticipants"
+            data-cy="expectedParticipants"
+            formControlName="expectedParticipants"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_coverImage" jhiTranslate="openPracticeLibraryApp.practiceItem.coverImage">Cover Image</label>
+          <select
+            class="form-control"
+            id="field_coverImage"
+            data-cy="coverImage"
+            name="coverImage"
+            formControlName="coverImage"
+            [compareWith]="compareMediaAsset"
+          >
+            <option [ngValue]="null"></option>
+            @for (mediaAssetOption of coverImagesCollection; track $index) {
+              <option [ngValue]="mediaAssetOption">{{ mediaAssetOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
