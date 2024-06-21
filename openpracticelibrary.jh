@@ -1,0 +1,119 @@
+
+application {
+  config {
+    baseName openPracticeLibrary
+    applicationType monolith
+    packageName com.opl.api
+    authenticationType jwt
+    prodDatabaseType oracle
+    clientFramework angularX
+  }
+  entities *
+}
+entity PracticeItem {
+	title String
+    objective String
+    publishDate ZonedDateTime
+    publishedBy String
+    status Status
+    approvedBy String
+    approvedDate ZonedDateTime
+    authors String
+    tags String
+    facilitationDifficulty FacilitationDifficulty
+    mobiusLoopTag MobiusLoopTag
+    what TextBlob
+    why TextBlob
+    how TextBlob
+    numberOfPeopleRequired String
+    timeLength String
+    expectedParticipants String
+
+}
+entity BlogItem {
+	title String
+    subtitle String
+    publishDate ZonedDateTime
+    publishedBy String
+    status Status
+    approvedBy String
+    approvedDate ZonedDateTime
+    authors String
+    jumbotronAltText String
+    body TextBlob
+
+}
+
+entity PageItem {
+	title String
+    authors String
+    menu String
+    menuWeight String
+    publishDate Date
+    publishedBy String
+    status Status
+    approvedBy String
+    approvedDate Date
+    jumbotronAltText String
+    body TextBlob
+
+}
+entity Author {
+	name String
+    githubUsername String
+    aboutYou TextBlob
+    location String
+    website String
+    publishDate Date
+    publishedBy String
+    status Status
+    approvedBy String
+    approvedDate Date
+}
+
+entity Tag {
+    content String
+}
+enum MobiusLoopTag {
+     DISCOVERY, DELIVERY, FOUNDATION, OPTIONS
+}
+entity MediaAsset {
+    type MediaAssetType
+    content ImageBlob
+    sortIndex Integer
+}
+enum MediaItemType {
+     IMAGE, URL
+}
+entity LinkItem {
+    url String
+    sortIndex Integer
+}
+
+enum FacilitationDifficulty {
+    EASY, MODERATE, HIGH
+}
+enum Status {
+    DRAFT, IN_REVIEW, READY, PUBLISHED
+}
+
+relationship OneToOne {
+
+    PracticeItem to MediaAsset{coverImage}
+    BlogItem to MediaAsset{jumbotronImage}
+    PageItem to MediaAsset{jumbotronImage}
+    
+}
+relationship OneToMany {
+	PracticeItem to Tag{tags}
+    PracticeItem to LinkItem{links}
+    PracticeItem to MediaAsset{images}
+}
+
+// Set pagination options
+paginate PracticeItem with infinite-scroll
+
+// Use Data Transfer Objects (DTO)
+ dto * with mapstruct
+
+
